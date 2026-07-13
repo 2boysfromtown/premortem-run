@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "allowImportingTsExtensions": false,
+    "outDir": "dist/server",
+    "declaration": false,
+    "sourceMap": true
+  },
+  "include": ["apps/**/*.ts", "packages/**/*.ts"],
+  "exclude": ["apps/web/client/**/*", "**/*.test.ts", "tests/**/*"]
+}

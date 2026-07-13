@@ -1,0 +1,15 @@
+node_modules/
+dist/
+coverage/
+playwright-report/
+test-results/
+.premortem/
+artifacts/
+*.db
+*.db-shm
+*.db-wal
+.env
+.env.*
+!.env.example
+work/
+outputs/

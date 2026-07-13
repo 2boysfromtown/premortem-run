@@ -1,0 +1,32 @@
+services:
+  premortem:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    init: true
+    ipc: host
+    user: pwuser
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    ports:
+      - '127.0.0.1:4310:4310'
+    environment:
+      NODE_ENV: development
+      HOST: 0.0.0.0
+      PORT: 4310
+      SERVE_WEB: 'true'
+      ALLOW_DEMO_TARGET: 'true'
+      DEMO_ORIGIN: http://127.0.0.1:4312
+      DEMO_TARGET_HOST: 127.0.0.1
+      DATABASE_URL: .premortem/premortem.db
+      ARTIFACTS_DIR: .premortem/artifacts
+      AI_PROVIDER: ${AI_PROVIDER:-deterministic}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      OPENAI_MODEL: ${OPENAI_MODEL:-gpt-5.4-mini}
+      AI_TIMEOUT_MS: ${AI_TIMEOUT_MS:-15000}
+    volumes:
+      - premortem-data:/app/.premortem
+
+volumes:
+  premortem-data:
