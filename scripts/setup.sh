@@ -5,12 +5,12 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT"
 
 if ! command -v node >/dev/null 2>&1; then
-  echo "Node.js 20.19 or newer is required: https://nodejs.org/" >&2
+  echo "Node.js 22.13 or newer is required: https://nodejs.org/" >&2
   exit 1
 fi
 
-node -e "const [a,b]=process.versions.node.split('.').map(Number);process.exit(a>20||(a===20&&b>=19)?0:1)" || {
-  echo "Node.js 20.19 or newer is required." >&2
+node -e "const [a,b]=process.versions.node.split('.').map(Number);process.exit(a>22||(a===22&&b>=13)?0:1)" || {
+  echo "Node.js 22.13 or newer is required." >&2
   exit 1
 }
 
@@ -19,7 +19,7 @@ if command -v pnpm >/dev/null 2>&1; then
 elif command -v corepack >/dev/null 2>&1; then
   PNPM=(corepack pnpm)
 else
-  echo "pnpm/Corepack is unavailable. Install Node.js 20.19 or newer." >&2
+  echo "pnpm/Corepack is unavailable. Install Node.js 22.13 or newer." >&2
   exit 1
 fi
 

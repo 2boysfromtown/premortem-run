@@ -8,7 +8,7 @@ It is not a conversion predictor or a replacement for real user research. It sep
 
 ## One-click local install
 
-PREMORTEM runs on Windows, macOS, and Linux computers with Node.js 20.19 or newer. The first setup downloads dependencies and Chromium, so it requires internet access. After installation, the included deterministic demo runs entirely on-device without an AI key. Testing remote websites and using OpenAI mode require network access.
+PREMORTEM runs on Windows, macOS, and Linux computers with Node.js 22.13 or newer. The first setup downloads dependencies and Chromium, so it requires internet access. After installation, the included deterministic demo runs entirely on-device without an AI key. Testing remote websites and using OpenAI mode require network access.
 
 ### Windows
 

@@ -12,17 +12,17 @@ function Invoke-Pnpm {
   } elseif (Get-Command corepack -ErrorAction SilentlyContinue) {
     & corepack pnpm @Arguments
   } else {
-    throw 'pnpm/Corepack is unavailable. Install Node.js 20.19 or newer, then run this launcher again.'
+    throw 'pnpm/Corepack is unavailable. Install Node.js 22.13 or newer, then run this launcher again.'
   }
   if ($LASTEXITCODE -ne 0) { throw "pnpm failed with exit code $LASTEXITCODE" }
 }
 
 if (-not (Get-Command node -ErrorAction SilentlyContinue)) {
-  throw 'Node.js 20.19 or newer is required: https://nodejs.org/'
+  throw 'Node.js 22.13 or newer is required: https://nodejs.org/'
 }
 
-$NodeVersionOk = node -e "const [a,b]=process.versions.node.split('.').map(Number);process.exit(a>20||(a===20&&b>=19)?0:1)"
-if ($LASTEXITCODE -ne 0) { throw 'Node.js 20.19 or newer is required.' }
+node -e "const [a,b]=process.versions.node.split('.').map(Number);process.exit(a>22||(a===22&&b>=13)?0:1)"
+if ($LASTEXITCODE -ne 0) { throw 'Node.js 22.13 or newer is required.' }
 
 if (-not (Test-Path -LiteralPath '.env')) {
   Copy-Item -LiteralPath '.env.example' -Destination '.env'
